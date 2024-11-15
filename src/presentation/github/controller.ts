@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
+import { GithubService } from "../services";
 
 
 export class GithubController {
 
     constructor(
-
+        private readonly githubSevice: GithubService = new GithubService(),
     ){};
     
 
@@ -15,6 +16,17 @@ export class GithubController {
 
         const payload = req.body;
        // console.log(JSON.stringify(payload));
+       let message:string;
+
+       switch(githubEvent){
+        case 'star':
+            message = this.githubSevice.onStar(payload);
+        break;
+
+        default:
+           message = `Unknown event: ${githubEvent}`;
+       }
+       console.log({message});
 
       res.status(202).send('Accepted')
     }
