@@ -13,7 +13,7 @@ export class DiscordService {
             content: message,
             embeds: [{
                 image: {
-                    url: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm85OWRraDV4NzBzMXJ6ZDk5enljeGpocjJxczNsbXprajV1b29lcyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xl5QdxfNonh3q/giphy.gif'
+                    url: 'https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWthbXJuazN2bzJ6MjFmdDBkM3UxNzlxeDRraGt2OWh5bm5qcDJidSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JwwYTeuOHhEB2/giphy.gif'
                 }
             }]
 

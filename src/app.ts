@@ -1,6 +1,7 @@
 import express from 'express'
 import { envs } from './config';
 import { GithubController } from './presentation/github/controller';
+import { GithubMiddleware } from './presentation/middlewares';
 
 
 (()=>{
@@ -15,6 +16,7 @@ function main(){
       //* Middlewares
       app.use( express.json() ); // raw
       //app.use( express.urlencoded({ extended: true }) ); // x-www-form-urlencoded
+      app.use(GithubMiddleware.verifySignatur);
     
     app.post('/api/github', githubController.webhookHandler);
 
