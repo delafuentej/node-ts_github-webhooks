@@ -1,11 +1,12 @@
 import { Request, Response } from "express";
-import { GithubService } from "../services";
+import { DiscordService, GithubService } from "../services";
 
 
 export class GithubController {
 
     constructor(
         private readonly githubSevice: GithubService = new GithubService(),
+        private readonly discordService: DiscordService = new DiscordService(),
     ){};
     
 
@@ -29,9 +30,11 @@ export class GithubController {
         default:
            message = `Unknown event: ${githubEvent}`;
        }
-       console.log({message});
-
-      res.status(202).send('Accepted')
+      // console.log({message});
+       this.discordService.notify(message)
+       .then( () => res.status(202).send('Accepted'))
+       .catch( ()=> res.status(500).json({error: 'Internal Server Error'}))
+     
     }
 
 }
